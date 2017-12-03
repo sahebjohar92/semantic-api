@@ -9,9 +9,11 @@ public class MusicQueryBuilder {
 
         return "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                 "PREFIX InSync: <http://www.semanticweb.org/abhishek/ontologies/2017/9/insync#>\n" +
-                "SELECT distinct ?name\n" +
+                "SELECT distinct ?name ?views ?url\n" +
                 "WHERE {\n" +
                 " ?song InSync:hasTrack ?name ;\n" +
+                " InSync:hasURL ?url ;\n" +
+                " InSync:hasViews ?views ;\n" +
                 "   InSync:hasArtist ?artist .\n" +
                 "  FILTER(?artist = '"+artist+"')\n" +
                 "}\n" +

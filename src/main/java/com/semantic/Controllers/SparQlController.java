@@ -123,7 +123,7 @@ public class SparQlController {
     }
 
     @RequestMapping("/getBooksForUser")
-    public BookResults getBooksForUser(@RequestParam(name = "artist") String artist,
+    public BookResults getBooksForUser(@RequestParam(name = "author") String author,
                                    @RequestParam(name = "userId") Integer userId) {
 
         BookResults bookResults = new BookResults();
@@ -133,10 +133,10 @@ public class SparQlController {
         String bookList = makeBooksIdStrForFriends(friendList);
 
         Results results =  loadOntology.
-                loadSparQlQueries(ApiConstants.bookServiceEndPoint, booksQueryBuilder.getBookQueryByAuthor(bookList, artist));
+                loadSparQlQueries(ApiConstants.bookServiceEndPoint, booksQueryBuilder.getBookQueryByAuthor(bookList, author));
 
 
-        String userBooks = makeStrFromResultByType(results, ApiConstants.MOVIE);
+        String userBooks = makeStrFromResultByType(results, ApiConstants.BOOKS);
 
         String[] arr = bookList.split(",");
         int size = arr.length;
@@ -147,7 +147,7 @@ public class SparQlController {
 
             Results resultRemaining =  loadOntology.
                     loadSparQlQueries(ApiConstants.bookServiceEndPoint, booksQueryBuilder
-                            .getBookQueryByGenreAndMovieFilter(userBooks, artist, remaining));
+                            .getBookQueryByGenreAndMovieFilter(userBooks, author, remaining));
 
             bookResults.setAllBookList(resultRemaining.getResultList());
         }
