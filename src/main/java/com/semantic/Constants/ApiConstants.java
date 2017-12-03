@@ -19,7 +19,7 @@ public class ApiConstants {
     public static final String MOVIE = "movie";
     public static final String BOOKS = "book";
 
-    public static final int MOVIE_COUNT = 10;
+    public static final int MOVIE_COUNT = 12;
     public static final int MUSIC_COUNT = 12;
-    public static final int BOOK_COUNT = 10;
+    public static final int BOOK_COUNT = 12;
 }
