@@ -2,7 +2,7 @@ package com.semantic.Constants;
 
 public class ApiConstants {
 
-    public static final String IP = "34.216.149.88:3030";
+    public static final String IP = "localhost:3030";
     public static final String movieServiceEndPoint = "http://"+IP+"/Movie/query";
     public static final String userServiceEndPoint = "http://"+IP+"/users/query";
     public static final String musicServiceEndPoint = "http://"+IP+"/Music/query";

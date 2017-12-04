@@ -10,6 +10,7 @@ import com.semantic.QueryBuilder.MusicQueryBuilder;
 import com.semantic.QueryBuilder.UserQueryBuilder;
 import com.semantic.QueryHelper.LoadOntology;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,7 @@ public class SparQlController {
     @Autowired
     BooksQueryBuilder booksQueryBuilder;
 
+    @CrossOrigin
     @RequestMapping("/getMovies")
     public Results getMovies(@RequestParam(name = "count", required = false) Integer count) {
 
@@ -45,6 +47,7 @@ public class SparQlController {
         return loadOntology.loadSparQlQueries(ApiConstants.movieServiceEndPoint, movieQueryBuilder.getMovieQuery(count));
     }
 
+    @CrossOrigin
     @RequestMapping("/getUserDetails")
     public Results getUserDetails(@RequestParam(name = "userId") Integer userId,
                                   @RequestParam(name = "page", required = false) String page) {
@@ -54,6 +57,7 @@ public class SparQlController {
         return loadOntology.loadSparQlQueries(ApiConstants.userServiceEndPoint, userQueryBuilder.getUserQuery(userIdStr), page);
     }
 
+    @CrossOrigin
     @RequestMapping("/getUserFriends")
     public List<String> getUserFriendsDetails(@RequestParam(name = "userId") Integer userId) {
 
@@ -73,6 +77,7 @@ public class SparQlController {
     }
 
 
+    @CrossOrigin
     @RequestMapping("/getMoviesForUser")
     public MovieResults getMoviesForUser(@RequestParam(name = "userId") Integer userId,
                                     @RequestParam(name ="genre") String genre) {
@@ -109,6 +114,7 @@ public class SparQlController {
         return movieResults;
     }
 
+    @CrossOrigin
     @RequestMapping("/getSongsForUser")
     public Results getSongsForUser(@RequestParam(name = "artist") String artist,
                                    @RequestParam(name = "count", required = false) Integer count) {
@@ -122,6 +128,7 @@ public class SparQlController {
                         .getMusicQuery(artist, count));
     }
 
+    @CrossOrigin
     @RequestMapping("/getBooksForUser")
     public BookResults getBooksForUser(@RequestParam(name = "author") String author,
                                    @RequestParam(name = "userId") Integer userId) {
